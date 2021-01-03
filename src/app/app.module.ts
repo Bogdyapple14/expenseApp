@@ -11,6 +11,7 @@ import { InputsComponent } from './components/inputs/inputs.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { ObjectsComponent } from './components/objects/objects.component';
 import { ObjectComponent } from './components/object/object.component';
+import { ObjectsService } from './shared/objects.service';
 
 @NgModule({
   declarations: [

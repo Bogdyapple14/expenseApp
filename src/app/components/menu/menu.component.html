@@ -1,13 +1,9 @@
 <div class="container">
   <div class="row">
-    <div class="col-4">
-      <button class="btn">Food</button>
-    </div>
-    <div class="col-4">
-      <button class="btn">Necesities</button>
-    </div>
-    <div class="col-4">
-      <button class="btn">Misc</button>
+    <div class="col-3" *ngFor="let button of buttons">
+      <button class="btn" (click)="changeType(button.content)">
+        {{ button.content }}
+      </button>
     </div>
   </div>
 </div>

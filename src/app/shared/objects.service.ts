@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
@@ -6,19 +6,22 @@ import { Injectable } from '@angular/core';
 export class ObjectsService {
   objects = [
     {
+      title: 'Spartan Sandwich',
+      price: 4,
+      type: 'Food',
+    },
+    {
+      title: 'Math Lessons',
+      price: 10,
+      type: 'Necesities',
+    },
+    {
       title: 'Ice Skating',
       price: 10,
       type: 'Misc',
     },
-    {
-      title: 'Math Lessons',
-      price: 5,
-      type: 'Necesities',
-    },
-    {
-      title: 'Hamburger',
-      price: 6,
-      type: 'Food',
-    },
   ];
+  type: string = '';
+
+  typeUpdated = new EventEmitter<string>();
 }

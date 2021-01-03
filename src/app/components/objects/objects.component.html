@@ -1,7 +1,11 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-6" *ngFor="let object of objects">
+<div class="objects">
+  <div class="object-container" *ngFor="let object of objects">
+    <app-object
+      [object]="object"
+      *ngIf="object.type === type && type; else allObjects"
+    ></app-object>
+    <ng-template #allObjects>
       <app-object [object]="object"></app-object>
-    </div>
+    </ng-template>
   </div>
 </div>

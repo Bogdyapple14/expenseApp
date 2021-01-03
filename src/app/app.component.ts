@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ObjectsService } from './shared/objects.service';
 
 @Component({
   selector: 'app-root',
