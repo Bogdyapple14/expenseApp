@@ -1,0 +1,58 @@
+.row {
+  position: sticky;
+  top: 25%;
+}
+.inputs-section {
+  display: flex;
+  flex-direction: column;
+  padding: 0 5vw;
+  h3 {
+    color: #5cdb6b;
+    font-weight: 500;
+    font-size: 2.3rem;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  h4 {
+    font-size: 1.6rem;
+    color: #8ccf94;
+    text-align: center;
+  }
+  input,
+  select {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    border: 3px solid #8ccf94;
+    padding: 5px 15px;
+    transition: 0.3s all;
+    outline: none;
+  }
+  select {
+    cursor: pointer;
+  }
+  label {
+    margin-top: 20px;
+  }
+  select option {
+    transition: 0.3s all;
+    &:hover {
+      background: red;
+    }
+  }
+  .add-button {
+    background: #8ccf94;
+    color: white;
+    font-weight: 500;
+    font-size: 1.6rem;
+    text-shadow: #474747 2px 2px 2px;
+    padding: 0;
+    transition: 0.3s all;
+    margin-top: 25px;
+    border: 3px solid #8ccf94;
+    &:hover {
+      background: transparent;
+      color: #8ccf94;
+    }
+  }
+}

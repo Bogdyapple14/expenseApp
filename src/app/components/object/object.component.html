@@ -1,0 +1,13 @@
+<div
+  class="object"
+  [ngClass]="{
+    necesity: object.type === 'Necesities',
+    misc: object.type === 'Misc',
+    food: object.type === 'Food'
+  }"
+>
+  <div class="object-wrap">
+    <h3 class="object-title">{{ object.title }}</h3>
+    <h3 class="object-price">${{ object.price }}</h3>
+  </div>
+</div>

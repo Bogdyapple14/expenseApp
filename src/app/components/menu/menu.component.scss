@@ -1,0 +1,20 @@
+.row {
+  text-align: center;
+  .btn {
+    margin-top: 0 !important;
+    width: 160px;
+    background: #8ccf94;
+    color: white;
+    font-weight: 500;
+    font-size: 1.8rem;
+    text-shadow: #474747 2px 2px 2px;
+    padding: 0 5px;
+    transition: 0.3s all;
+    margin-top: 10px;
+    border: 3px solid #8ccf94;
+    &:hover {
+      background: transparent;
+      color: #8ccf94;
+    }
+  }
+}
