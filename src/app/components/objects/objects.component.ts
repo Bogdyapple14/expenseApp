@@ -12,32 +12,41 @@ export class ObjectsComponent implements OnInit {
   type: string;
 
   ngOnInit() {
+    // Assign the type from the service and apply filters if existing
     this.type = this.ObjectService.type;
     this.filterObjects();
   }
 
   constructor(private ObjectService: ObjectsService) {
     // Subscribe to an event emitted from the service which returns the type everytime it is fired in a component
-    // (menu.component in this case) and reasing the old (this.type) type, to the new (type) type
+    // ( menu.component in this case ) and reassing the old (this.type) type, to the new (type) type
     this.ObjectService.typeUpdated.subscribe((type: string) => {
       this.type = type;
-      // Also, refilter the objects array to display contain only the items with the specific type in order to display them
+      // Refilter the objects array with the new type in order to display them
       this.filterObjects();
     });
 
+    // Subscribe to clearExpenses so that whenever the event is emitted it triggers
     this.ObjectService.clearExpenses.subscribe(() => {
+      // Clear the objects in the component and in the service
       this.objects = this.ObjectService.objects = [];
+      // Also clear the expenses in the service
       this.ObjectService.expenses = 0;
     });
 
-    this.ObjectService.addExpense.subscribe((dataObject) => {
+    // Subscribe to addExpense so that whenever the event is emitted it triggers
+    this.ObjectService.addExpense.subscribe((dataObject: any) => {
+      // Push a new object with the arguments emitted from input component (dataObject)
       this.ObjectService.objects.push(dataObject);
+      // Filter the objects after adding the new one
       this.filterObjects();
     });
   }
 
   filterObjects() {
+    // If the type is all, remove any filters from the objects
     if (this.type === 'All') this.objects = this.ObjectService.objects;
+    // Else, filter them based on the actual type
     else
       this.objects = this.ObjectService.objects.filter(
         (object) => object.type === this.type

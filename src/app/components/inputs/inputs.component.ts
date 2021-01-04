@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { expenseObject } from 'src/app/shared/expenseObject.model';
 import { ObjectsService } from 'src/app/shared/objects.service';
 
 @Component({
@@ -12,26 +11,37 @@ export class InputsComponent implements OnInit {
   expenses: number;
 
   ngOnInit(): void {
+    // Initialize the values with the ones from the service
     this.type = this.ObjectsService.type;
     this.expenses = this.ObjectsService.expenses;
   }
 
   constructor(private ObjectsService: ObjectsService) {
+    // Listen for changes in the service for 'type'
     this.ObjectsService.typeUpdated.subscribe((type: string) => {
-      this.ObjectsService.getExpenses(type);
-      this.expenses = this.ObjectsService.expenses;
+      // recalculate expenses for the specific type and assign them to the expenses variable in this component
+      this.expenses = this.ObjectsService.getExpenses(type);
+      // Also, change the type in the component to the one from service
       this.type = type;
     });
   }
 
-  addExpense(title: string, price, type: string) {
+  // Add a new expense object with the values taken from the DOM
+  // Price has type any cause the input returns a string and in the model it is declared as a number
+  addExpense(title: string, price: any, type: string) {
+    // Transform the price from string to number
     price = parseFloat(price);
+    // Emit the new object so that service knows that objects array changed ( event listened in the objects component )
     this.ObjectsService.addExpense.emit({ title, price, type });
+    // Recalculate and assign the expenses with the new object added in the array
     this.expenses = this.ObjectsService.getExpenses(this.type);
   }
 
+  // Clear all the expenses & the objects
   clearExpenses() {
+    // Emit an event so that srevice knows that objects array changed ( event listened in the objects component )
     this.ObjectsService.clearExpenses.emit();
+    // Empty the expenses
     this.expenses = 0;
   }
 }
