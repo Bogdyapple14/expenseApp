@@ -1,3 +1,4 @@
+import { TokenizeResult } from '@angular/compiler/src/ml_parser/lexer';
 import { Injectable, EventEmitter } from '@angular/core';
 
 @Injectable({
@@ -36,11 +37,22 @@ export class ObjectsService {
       type: 'Misc',
     },
   ];
-  type: string = '';
+  type: string = 'All';
+  expenses: number = this.getExpenses(this.type);
 
   typeUpdated = new EventEmitter<string>();
+  clearExpenses = new EventEmitter();
+
   addExpense(title: string, price: number, type: string) {
     this.objects.push({ title, price, type });
   }
-  clearExpenses = new EventEmitter();
+  getExpenses(type: string) {
+    let sum: number = 0;
+    this.objects.forEach((object) => {
+      if (type === 'All') sum += object.price;
+      else if (object.type === type) sum += object.price;
+    });
+    this.expenses = sum;
+    return this.expenses;
+  }
 }

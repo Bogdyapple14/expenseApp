@@ -6,7 +6,7 @@
     <label for="price"><h4>Money Spent</h4></label>
     <input type="number" placeholder="12.30" #price />
     <label for="domain"><h4>Expense Type</h4></label>
-    <select name="type" #type>
+    <select name="type" #selectType>
       <option selected disabled hidden>Select Your Type</option>
       <option value="Food">Food</option>
       <option value="Necesities">Necesities</option>
@@ -16,7 +16,7 @@
       <div class="col-6">
         <button
           class="btn add-button"
-          (click)="addExpense(title.value, price.value, type.value)"
+          (click)="addExpense(title.value, price.value, selectType.value)"
         >
           Add Expense
         </button>
@@ -26,6 +26,9 @@
           Clear Expenses
         </button>
       </div>
+    </div>
+    <div class="col-12 total-expenses">
+      <h4>Total expenses on {{ type }} : ${{ expenses }}</h4>
     </div>
   </div>
 </div>

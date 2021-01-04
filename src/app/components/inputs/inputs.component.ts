@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { expenseObject } from 'src/app/shared/expenseObject.model';
 import { ObjectsService } from 'src/app/shared/objects.service';
 
 @Component({
@@ -7,15 +8,30 @@ import { ObjectsService } from 'src/app/shared/objects.service';
   styleUrls: ['./inputs.component.scss'],
 })
 export class InputsComponent implements OnInit {
-  constructor(private ObjectsService: ObjectsService) {}
+  type: string;
+  expenses: number;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.type = this.ObjectsService.type;
+    this.expenses = this.ObjectsService.expenses;
+  }
 
-  addExpense(title: string, price: number, type: string) {
-    this.ObjectsService.addExpense(title, price, type);
+  constructor(private ObjectsService: ObjectsService) {
+    this.ObjectsService.typeUpdated.subscribe((type: string) => {
+      this.ObjectsService.getExpenses(type);
+      this.expenses = this.ObjectsService.expenses;
+    });
+  }
+
+  addExpense(title: string, price: string, type: string) {
+    this.ObjectsService.addExpense(title, parseFloat(price), type);
+    this.ObjectsService.getExpenses(this.type);
+    this.expenses = this.ObjectsService.expenses;
+    console.log(this.ObjectsService.objects);
   }
 
   clearExpenses() {
     this.ObjectsService.clearExpenses.emit();
+    this.expenses = 0;
   }
 }
