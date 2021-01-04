@@ -2,16 +2,30 @@
   <div class="col-12 inputs-section">
     <h3 class="inputs-title">Enter Your Payments Data</h3>
     <label for="name"><h4>Object Bought</h4></label>
-    <input type="text" placeholder="Dinner at KFC" />
+    <input type="text" placeholder="Dinner at KFC" #title />
     <label for="price"><h4>Money Spent</h4></label>
-    <input type="text" placeholder="12.30" />
+    <input type="number" placeholder="12.30" #price />
     <label for="domain"><h4>Expense Type</h4></label>
-    <select name="type">
+    <select name="type" #type>
       <option selected disabled hidden>Select Your Type</option>
-      <option value="food">Food</option>
-      <option value="necesities">Necesities</option>
-      <option value="misc">Misc</option>
+      <option value="Food">Food</option>
+      <option value="Necesities">Necesities</option>
+      <option value="Misc">Misc</option>
     </select>
-    <button class="btn add-button">Add Expense</button>
+    <div class="row buttons">
+      <div class="col-6">
+        <button
+          class="btn add-button"
+          (click)="addExpense(title.value, price.value, type.value)"
+        >
+          Add Expense
+        </button>
+      </div>
+      <div class="col-6">
+        <button class="btn clear-button" (click)="clearExpenses()">
+          Clear Expenses
+        </button>
+      </div>
+    </div>
   </div>
 </div>

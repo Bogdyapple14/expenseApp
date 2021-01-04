@@ -27,6 +27,7 @@ export class MenuComponent implements OnInit {
   ngOnInit(): void {}
 
   changeType(type: string) {
+    // Emit an event that changes the type variable in service ( this event is listened in the objects component )
     this.objectService.typeUpdated.emit(type);
   }
 }

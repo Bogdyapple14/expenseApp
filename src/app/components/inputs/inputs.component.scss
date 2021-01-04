@@ -40,8 +40,10 @@
       background: red;
     }
   }
-  .add-button {
+  .add-button,
+  .clear-button {
     background: #8ccf94;
+    width: 100%;
     color: white;
     font-weight: 500;
     font-size: 1.6rem;
@@ -53,6 +55,13 @@
     &:hover {
       background: transparent;
       color: #8ccf94;
+    }
+  }
+  .clear-button {
+    background: #e07e7e;
+    border-color: #be4c4c;
+    &:hover {
+      color: #be4c4c;
     }
   }
 }

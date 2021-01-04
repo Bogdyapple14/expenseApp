@@ -21,8 +21,11 @@ export class ObjectsComponent implements OnInit {
       this.objects = this.ObjectService.objects.filter(
         (object) => object.type === this.type
       );
-      // Condition for the "All" Button
+      // If the type is "All" we do not apply any filter to the objects array
       if (this.type === 'All') this.objects = this.ObjectService.objects;
+    });
+    this.ObjectService.clearExpenses.subscribe(() => {
+      this.objects = this.ObjectService.objects = [];
     });
   }
 

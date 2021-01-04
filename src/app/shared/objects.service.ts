@@ -11,8 +11,18 @@ export class ObjectsService {
       type: 'Food',
     },
     {
+      title: 'Profi Shopping',
+      price: 7,
+      type: 'Food',
+    },
+    {
       title: 'Math Lessons',
       price: 10,
+      type: 'Necesities',
+    },
+    {
+      title: 'Taxes',
+      price: 30,
       type: 'Necesities',
     },
     {
@@ -20,8 +30,17 @@ export class ObjectsService {
       price: 10,
       type: 'Misc',
     },
+    {
+      title: 'League Skins',
+      price: 500,
+      type: 'Misc',
+    },
   ];
   type: string = '';
 
   typeUpdated = new EventEmitter<string>();
+  addExpense(title: string, price: number, type: string) {
+    this.objects.push({ title, price, type });
+  }
+  clearExpenses = new EventEmitter();
 }
