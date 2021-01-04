@@ -29,6 +29,11 @@ export class ObjectsComponent implements OnInit {
       this.objects = this.ObjectService.objects = [];
       this.ObjectService.expenses = 0;
     });
+
+    this.ObjectService.addExpense.subscribe((dataObject) => {
+      this.ObjectService.objects.push(dataObject);
+      this.filterObjects();
+    });
   }
 
   filterObjects() {

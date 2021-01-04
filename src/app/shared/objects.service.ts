@@ -1,5 +1,5 @@
-import { TokenizeResult } from '@angular/compiler/src/ml_parser/lexer';
 import { Injectable, EventEmitter } from '@angular/core';
+import { expenseObject } from './expenseObject.model';
 
 @Injectable({
   providedIn: 'root',
@@ -42,10 +42,8 @@ export class ObjectsService {
 
   typeUpdated = new EventEmitter<string>();
   clearExpenses = new EventEmitter();
+  addExpense = new EventEmitter<expenseObject>();
 
-  addExpense(title: string, price: number, type: string) {
-    this.objects.push({ title, price, type });
-  }
   getExpenses(type: string) {
     let sum: number = 0;
     this.objects.forEach((object) => {

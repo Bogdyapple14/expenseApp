@@ -20,14 +20,14 @@ export class InputsComponent implements OnInit {
     this.ObjectsService.typeUpdated.subscribe((type: string) => {
       this.ObjectsService.getExpenses(type);
       this.expenses = this.ObjectsService.expenses;
+      this.type = type;
     });
   }
 
-  addExpense(title: string, price: string, type: string) {
-    this.ObjectsService.addExpense(title, parseFloat(price), type);
-    this.ObjectsService.getExpenses(this.type);
-    this.expenses = this.ObjectsService.expenses;
-    console.log(this.ObjectsService.objects);
+  addExpense(title: string, price, type: string) {
+    price = parseFloat(price);
+    this.ObjectsService.addExpense.emit({ title, price, type });
+    this.expenses = this.ObjectsService.getExpenses(this.type);
   }
 
   clearExpenses() {
