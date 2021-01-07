@@ -13,6 +13,7 @@ export class InputsComponent implements OnInit {
   ngOnInit(): void {
     // Initialize the values with the ones from the service
     this.type = this.ObjectsService.type;
+    this.retrieveFromLocalStorageExpenses();
     this.expenses = this.ObjectsService.expenses;
   }
 
@@ -35,6 +36,23 @@ export class InputsComponent implements OnInit {
     this.ObjectsService.addExpense.emit({ title, price, type });
     // Recalculate and assign the expenses with the new object added in the array
     this.expenses = this.ObjectsService.getExpenses(this.type);
+    this.setToLocalStorageExpenses();
+  }
+
+  setToLocalStorageExpenses() {
+    localStorage.setItem(
+      'totalCost',
+      JSON.stringify(this.ObjectsService.expenses)
+    );
+  }
+
+  retrieveFromLocalStorageExpenses() {
+    if (localStorage.getItem('totalCost') === null) {
+      this.ObjectsService.expenses = 0;
+    } else
+      this.ObjectsService.expenses = JSON.parse(
+        localStorage.getItem('totalCost')
+      );
   }
 
   // Clear all the expenses & the objects
