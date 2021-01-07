@@ -1,7 +1,11 @@
 <div class="container">
   <div class="row">
     <div class="col-3" *ngFor="let button of buttons">
-      <button class="btn" (click)="changeType(button.content)">
+      <button
+        class="btn"
+        (click)="changeType(button.content)"
+        [ngClass]="{ isSelected: button.content === type }"
+      >
         {{ button.content }}
       </button>
     </div>

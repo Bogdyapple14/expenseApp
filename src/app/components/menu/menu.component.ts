@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { log } from 'console';
 import { ObjectsService } from 'src/app/shared/objects.service';
 
 @Component({
@@ -7,6 +8,8 @@ import { ObjectsService } from 'src/app/shared/objects.service';
   styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent implements OnInit {
+  isSelected: boolean;
+  type: string;
   buttons = [
     {
       content: 'Food',
@@ -22,9 +25,15 @@ export class MenuComponent implements OnInit {
     },
   ];
 
-  constructor(private objectService: ObjectsService) {}
+  constructor(private objectService: ObjectsService) {
+    this.objectService.typeUpdated.subscribe((type: string) => {
+      this.type = type;
+    });
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.type = this.objectService.type;
+  }
 
   changeType(type: string) {
     // Emit an event that changes the type variable in service ( this event is listened in the objects component )
