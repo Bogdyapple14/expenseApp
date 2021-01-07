@@ -14,6 +14,7 @@ export class ObjectsComponent implements OnInit {
   ngOnInit() {
     // Assign the type from the service and apply filters if existing
     this.type = this.ObjectService.type;
+    this.retrieveFromLocalStorage();
     this.filterObjects();
   }
 
@@ -32,6 +33,7 @@ export class ObjectsComponent implements OnInit {
       this.objects = this.ObjectService.objects = [];
       // Also clear the expenses in the service
       this.ObjectService.expenses = 0;
+      this.setToLocalStorage();
     });
 
     // Subscribe to addExpense so that whenever the event is emitted it triggers
@@ -40,7 +42,20 @@ export class ObjectsComponent implements OnInit {
       this.ObjectService.objects.push(dataObject);
       // Filter the objects after adding the new one
       this.filterObjects();
+      this.setToLocalStorage();
     });
+  }
+
+  setToLocalStorage() {
+    localStorage.setItem('expense', JSON.stringify(this.ObjectService.objects));
+  }
+
+  retrieveFromLocalStorage() {
+    if (localStorage.getItem('expense') === null) {
+      this.objects = this.ObjectService.objects = [];
+      this.ObjectService.expenses = 0;
+    } else
+      this.ObjectService.objects = JSON.parse(localStorage.getItem('expense'));
   }
 
   filterObjects() {

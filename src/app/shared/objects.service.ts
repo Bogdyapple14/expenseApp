@@ -5,38 +5,7 @@ import { expenseObject } from './expenseObject.model';
   providedIn: 'root',
 })
 export class ObjectsService {
-  objects = [
-    {
-      title: 'Spartan Sandwich',
-      price: 4,
-      type: 'Food',
-    },
-    {
-      title: 'Profi Shopping',
-      price: 7,
-      type: 'Food',
-    },
-    {
-      title: 'Math Lessons',
-      price: 10,
-      type: 'Necesities',
-    },
-    {
-      title: 'Taxes',
-      price: 30,
-      type: 'Necesities',
-    },
-    {
-      title: 'Ice Skating',
-      price: 10,
-      type: 'Misc',
-    },
-    {
-      title: 'League Skins',
-      price: 500,
-      type: 'Misc',
-    },
-  ];
+  objects = [];
   // Initialize the type with 'All' to show all objects
   type: string = 'All';
   expenses: number = this.getExpenses(this.type);
