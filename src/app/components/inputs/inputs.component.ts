@@ -51,22 +51,6 @@ export class InputsComponent implements OnInit {
     } else alert('You Must Introduce All The Data');
   }
 
-  // setToLocalStorageExpenses() {
-  //   localStorage.setItem(
-  //     'totalCost',
-  //     JSON.stringify(this.ObjectsService.expenses)
-  //   );
-  // }
-
-  // retrieveFromLocalStorageExpenses() {
-  //   if (localStorage.getItem('totalCost') === null) {
-  //     this.ObjectsService.expenses = 0;
-  //   } else
-  //     this.ObjectsService.expenses = JSON.parse(
-  //       localStorage.getItem('totalCost')
-  //     );
-  // }
-
   // Clear all the expenses & the objects
   clearExpenses() {
     if (this.ObjectsService.objects.length) {
