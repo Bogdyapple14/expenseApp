@@ -12,6 +12,8 @@ import { MenuComponent } from './components/menu/menu.component';
 import { ObjectsComponent } from './components/objects/objects.component';
 import { ObjectComponent } from './components/object/object.component';
 import { ObjectsService } from './shared/objects.service';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,7 @@ import { ObjectsService } from './shared/objects.service';
     BrowserAnimationsModule,
     MatButtonModule,
     MatInputModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [],
   bootstrap: [AppComponent],

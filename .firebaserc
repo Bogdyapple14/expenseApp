@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "bobita-expense-app": {
+      "hosting": {
+        "expenseApp": [
+          "bobita-expense-app"
+        ]
+      }
+    }
+  }
+}

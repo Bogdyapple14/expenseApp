@@ -89,3 +89,9 @@
     top: 5%;
   }
 }
+
+@media (max-width: 768px) {
+  .inputs-section {
+    padding: 0 10px;
+  }
+}
