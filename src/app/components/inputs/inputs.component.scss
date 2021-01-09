@@ -65,6 +65,27 @@
     }
   }
   .total-expenses {
-    margin-top: 40px;
+    margin-top: 20px;
+    h4 {
+      line-height: 30px;
+    }
+  }
+}
+
+@media (max-width: 1500px) {
+  .row {
+    top: 15%;
+  }
+}
+
+@media (max-width: 1200px) {
+  .inputs-title {
+    line-height: 40px;
+  }
+  .btn {
+    width: 100%;
+  }
+  .row {
+    top: 5%;
   }
 }

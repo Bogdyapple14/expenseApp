@@ -6,8 +6,15 @@
     food: object.type === 'Food'
   }"
 >
-  <div class="object-wrap">
+  <div
+    class="object-wrap"
+    [ngStyle]="{ filter: isDisplayEdit ? 'brightness(.4)' : '' }"
+    (click)="displayEdit()"
+  >
     <h3 class="object-title">{{ object.title }}</h3>
     <h3 class="object-price">${{ object.price }}</h3>
+  </div>
+  <div class="object-edit" *ngIf="isDisplayEdit" (click)="removeItem()">
+    <h3><i class="fa fa-trash-alt"></i> Delete</h3>
   </div>
 </div>

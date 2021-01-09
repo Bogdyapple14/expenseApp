@@ -7,13 +7,13 @@
     <input type="number" placeholder="12.30" #price />
     <label for="domain"><h4>Expense Type</h4></label>
     <select name="type" #selectType>
-      <option selected disabled hidden>Select Your Type</option>
+      <option selected disabled hidden>Select Expense Type</option>
       <option value="Food">Food</option>
       <option value="Necesities">Necesities</option>
       <option value="Misc">Misc</option>
     </select>
     <div class="row buttons">
-      <div class="col-6">
+      <div class="col-xl-6 col-12">
         <button
           class="btn add-button"
           (click)="addExpense(title.value, price.value, selectType.value)"
@@ -21,7 +21,7 @@
           Add Expense
         </button>
       </div>
-      <div class="col-6">
+      <div class="col-xl-6 col-12">
         <button class="btn clear-button" (click)="clearExpenses()">
           Clear Expenses
         </button>

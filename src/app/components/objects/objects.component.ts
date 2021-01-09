@@ -14,7 +14,7 @@ export class ObjectsComponent implements OnInit {
   ngOnInit() {
     // Assign the type from the service and apply filters if existing
     this.type = this.ObjectService.type;
-    this.retrieveFromLocalStorage();
+    this.ObjectService.retrieveFromLocalStorage();
     this.filterObjects();
   }
 
@@ -47,15 +47,11 @@ export class ObjectsComponent implements OnInit {
   }
 
   setToLocalStorage() {
-    localStorage.setItem('expense', JSON.stringify(this.ObjectService.objects));
+    this.ObjectService.setToLocalStorage();
   }
 
-  retrieveFromLocalStorage() {
-    if (localStorage.getItem('expense') === null) {
-      this.objects = this.ObjectService.objects = [];
-      this.ObjectService.expenses = 0;
-    } else
-      this.ObjectService.objects = JSON.parse(localStorage.getItem('expense'));
+  getFromStorage() {
+    this.ObjectService.retrieveFromLocalStorage();
   }
 
   filterObjects() {

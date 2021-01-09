@@ -1,5 +1,5 @@
 <div class="objects">
-  <div class="object-container" *ngFor="let object of objects">
-    <app-object [object]="object"></app-object>
+  <div class="object-container" *ngFor="let object of objects; index as i">
+    <app-object [object]="object" [index]="i"></app-object>
   </div>
 </div>
